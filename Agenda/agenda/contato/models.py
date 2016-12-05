@@ -1,0 +1,27 @@
+from django.db import models
+
+# Create your models here.
+class Contato(models.Model):
+
+    SEXO_CHOICES = (
+
+        (u'masculino',u'Masculino'),
+        (u'feminino', u'Feminino' ),
+
+        )
+
+    ESTADO_CIVIL = (
+
+        (u'solteiro', u'Solteiro'),
+        (u'casado', u'Casado'),
+        (u'divorciado', u'Divorciado'),
+        (u'viuvo', u'Viuvo'),
+
+      )
+    contato_id = models.IntegerField(max_length=10, primary_key=True)
+    contato_nome = models.CharField(max_length=45, verbose_name='Nome')
+    contato_nascimento = models.DateField(verbose_name='Nascimento')
+    contato_sexo = models.CharField(max_length=50,  choices = SEXO_CHOICES, verbose_name='Sexo')
+    contato_estato_civil = models.CharField(max_length=50, choices = ESTADO_CIVIL, verbose_name='Estado Civil')
+    contato_email = models.EmailField(max_length=50, verbose_name='Email')
+    contato_favorito = models.BooleanField(verbose_name='Favorito')
